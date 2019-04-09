@@ -29,6 +29,7 @@
 
 
 ### アナログ能動騒音制御
+---------------------------------------
 
 旧来のノイズキャンセリングヘッドホン・イヤホンでは，アナログ回路を用いた能動騒音制御が主流であった([Link1](http://blog.livedoor.jp/sce_info3-craft/archives/6786242.html), [Link2](https://www.google.co.jp/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&ved=2ahUKEwiK2P6a9MLhAhWMgrwKHRIMCfQQFjADegQIABAC&url=https%3A%2F%2Fsucra.repo.nii.ac.jp%2Findex.php%3Faction%3Dpages_view_main%26active_action%3Drepository_action_common_download%26item_id%3D16772%26item_no%3D1%26attribute_id%3D24%26file_no%3D1%26page_id%3D26%26block_id%3D52&usg=AOvVaw2xQgOBrE7McDo1Q15RQ1Ze) ).
 
