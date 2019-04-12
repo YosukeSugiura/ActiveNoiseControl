@@ -21,7 +21,7 @@ N_1st			= 120;			% 騒音制御フィルタ W(z) の次数
 N_2nd			= 100;			% ２次経路モデル C_h(z) の次数
 
 % 適応フィルタの設定
-mu			= 0.5;				% 更新ステップサイズ for 騒音制御フィルタ
+mu			= 0.1;				% 更新ステップサイズ for 騒音制御フィルタ
 g_p			= 0.9;				% NLMS用平均パラメータ
 %-------------------------------------
 
@@ -59,7 +59,8 @@ c_h			= Imp_2nd(1:N_2nd);							% ２次経路モデルの係数 (既知)
 x_buf		= zeros(max([L_1st,N_1st, N_2nd]),1);		% 参照信号バッファ
 y_buf		= zeros(max(L_2nd,N_2nd),1);				% ２次経路バッファ
 c_h_x_buf	= zeros(1, N_1st);
-% -- Output --
+% -- 結果 --
+in			= zeros(len,1);								% 誤差マイクでの (誤差信号)
 out			= zeros(len,1);								% 結果 (誤差信号)
 % -- 計算用 --
 p_in		= 1;
@@ -97,9 +98,10 @@ for loop=1:len-N_1st
 	c_h_x_buf	= [c_h_x, c_h_x_buf(1:end-1)];	% バッファ
 	
 	% -- Filtered-X NLMSアルゴリズム --
-	w		= w - mu * e .* c_h_x_buf ./sum(x_buf(1:N_1st).^2);	% 更新
+	w		= w - mu * e .* c_h_x_buf ./mean(x_buf(1:N_1st).^2);	% 更新
 
-	out(loop) = e;
+	in(loop)	= out_1st;
+	out(loop)	= e;
 	
 end
 
@@ -107,7 +109,7 @@ end
 
 % 図のプロット
 figure(1);
-plot((1:len)./fs, s); hold on;
+plot((1:len)./fs, in); hold on;
 plot((1:len)./fs, out); hold off;
 % 図の設定
 title('Waveform')
@@ -117,7 +119,7 @@ legend('Input (Refecence Signal)','Output (Error Signal)')
 
 
 %% wav保存
-audiowrite('input.wav',s,fs);
+audiowrite('input.wav',in,fs);
 audiowrite('output.wav',out,fs);
 
 
