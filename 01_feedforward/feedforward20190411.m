@@ -26,12 +26,12 @@ g_p			= 0.9;				% NLMS用平均パラメータ
 %-------------------------------------
 
 %% 騒音の取得
-[s,fs]		= audioread('../data/cleaner.wav');	% 騒音信号
+[s,fs]		= audioread('../00_data/cleaner.wav');	% 騒音信号
 len			= length(s);
 
 %% インパルス応答の取得 (いじらないで)
-Imp_1st		= csvread('../data/impulse1.dat');	% １次経路のインパルス応答
-Imp_2nd		= csvread('../data/impulse2.dat');	% ２次経路のインパルス応答
+Imp_1st		= csvread('../00_data/impulse1.dat');	% １次経路のインパルス応答
+Imp_2nd		= csvread('../00_data/impulse2.dat');	% ２次経路のインパルス応答
 
 % １次経路のインパルス応答を作成
 smpl		= max( [1, floor(Dist_1st* 0.1/340.29 * fs)] ); % 遅延量
