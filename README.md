@@ -10,7 +10,7 @@ https://github.com/YosukeSugiura/ActiveNoiseControl/wiki
 
 各ソースコードフォルダの説明です．フォルダごとダウンロードしてください．
 
-- [00_data](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/00_data)
+- [00_data](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/00_data)  
    各ソースコードで使用する音声ファイルやインパルス応答等のデータが入っています．
    
 - [01_feedforward](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/01_feedforward)  
