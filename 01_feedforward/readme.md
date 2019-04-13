@@ -8,7 +8,7 @@ Matlab 2016 用ソースコードです．
    
    <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedforward_system.png" width="640px" />
    
-   ただし，**２次経路の推定はしていない**．２次経路は既知として，<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
+   ただし，**２次経路は推定していない**．２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
    
    ## 入力データ
    
