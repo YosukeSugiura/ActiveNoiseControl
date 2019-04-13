@@ -4,6 +4,7 @@
    
    Matlab 2016 用ソースコードです．シミュレートした環境は上図（[詳細な説明はこちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)）．
 
+* * * 
 - **feedforward20190411.m**  
 
    フィードフォワード制御を行う．ただし，**２次経路は推定していない**．２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
