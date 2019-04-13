@@ -58,7 +58,7 @@ c_h			= Imp_2nd(1:N_2nd);							% ２次経路モデルの係数 (既知)
 % -- Buffer --
 x_buf		= zeros(max([L_1st,N_1st, N_2nd]),1);		% 参照信号バッファ
 y_buf		= zeros(max(L_2nd,N_2nd),1);				% ２次経路バッファ
-c_h_x_buf	= zeros(1, N_1st);
+r_buf	= zeros(1, N_1st);
 % -- 結果 --
 in			= zeros(len,1);								% 誤差マイクでの (誤差信号)
 out			= zeros(len,1);								% 結果 (誤差信号)
@@ -92,13 +92,10 @@ for loop=1:len-N_1st
 	
 	% -- フィルタード参照信号 --
 	r			= c_h * x_buf(1:N_2nd);			% フィルタード参照信号
-	
-	% -- 更新用 ( ２次経路モデル * 参照信号 ) --
-	c_h_x		= c_h * x_buf(1:N_2nd);			% ２次経路モデル * 参照信号
-	c_h_x_buf	= [c_h_x, c_h_x_buf(1:end-1)];	% バッファ
+	r_buf		= [r, r_buf(1:end-1)];			% バッファ
 	
 	% -- Filtered-X NLMSアルゴリズム --
-	w		= w - mu * e .* c_h_x_buf ./mean(x_buf(1:N_1st).^2);	% 更新
+	w		= w - mu * e .* r_buf ./mean(x_buf(1:N_1st).^2);	% 更新
 
 	in(loop)	= out_1st;
 	out(loop)	= e;
