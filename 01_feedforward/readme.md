@@ -4,7 +4,10 @@ Matlab 2016 用ソースコードです．
 
 - **feedforward20190411.m**  
 
-   フィードフォワード制御を行う．シミュレートした環境は[こちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)．  
+   フィードフォワード制御を行う．シミュレートした環境は下図[詳細はこちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)．  
+   
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedforward_system.png" width="640px" />
+   
    ただし，**２次経路の推定はしていない**．２次経路は既知として，<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
    
    ## 入力データ
