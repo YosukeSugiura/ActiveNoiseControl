@@ -4,7 +4,7 @@ Matlab 2016 用ソースコードです．
 
 - **feedforward20190411.m**  
 
-   フィードフォワード制御を行う．シミュレートした環境は下図[詳細はこちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)．  
+   フィードフォワード制御を行う．シミュレートした環境は下図（[詳細な説明はこちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)）．  
    
    <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedforward_system.png" width="640px" />
    
