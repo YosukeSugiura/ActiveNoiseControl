@@ -6,15 +6,15 @@
 能動騒音制御 - Github wiki  
 https://github.com/YosukeSugiura/ActiveNoiseControl/wiki
 
-## ソースコード一覧
+## フォルダ一覧
 
-各ソースコードフォルダの説明です．フォルダごとダウンロードしてください．
+各フォルダの説明です．フォルダごとダウンロードしてください．
 
 - [00_data](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/00_data)  
    各ソースコードで使用する音声ファイルやインパルス応答等のデータが入っています．
    
 - [01_feedforward](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/01_feedforward)  
-   フォードフォワード制御を行うサンプルコードです．  
+   フォードフォワード制御を行うサンプルコード群です．  
    "00_data"フォルダも一緒にダウンロードしてください．
    
 ## 実行環境
