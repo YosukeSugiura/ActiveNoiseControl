@@ -1,4 +1,4 @@
-#  Active Noise Control
+#  能動騒音制御 (Active Noise Control：ANC)
 
 能動騒音制御を勉強するためのサンプルコードをいくつか置いておきます．  
 使い方や原理はwikiも参考にしてください．
