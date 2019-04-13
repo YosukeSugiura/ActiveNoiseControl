@@ -36,7 +36,7 @@
    ## 実行結果
    
    実行した結果は以下の図の通り．
-   入力騒音は掃除機のモーター音である．
+   入力騒音は機械動作音である．
    
    <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/01_feedforward/result.png">  
    
