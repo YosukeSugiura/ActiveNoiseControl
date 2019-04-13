@@ -1,14 +1,12 @@
 # フィードフォワード制御 
 
-Matlab 2016 用ソースコードです．
+Matlab 2016 用ソースコードです．シミュレートした環境は下図（[詳細な説明はこちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)）．  
+   
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedforward_system.png" width="520px" />
 
 - **feedforward20190411.m**  
 
-   フィードフォワード制御を行う．シミュレートした環境は下図（[詳細な説明はこちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)）．  
-   
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedforward_system.png" width="640px" />
-   
-   ただし，**２次経路は推定していない**．２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
+   フィードフォワード制御を行う．ただし，**２次経路は推定していない**．２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
    
    ## 入力データ
    
