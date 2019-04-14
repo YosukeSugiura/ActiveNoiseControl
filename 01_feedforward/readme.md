@@ -7,7 +7,7 @@
 * * * 
 - **feedforward_without_2ndpassEstimation.m**  
 
-   フィードフォワード制御を行う．ただし，**２次経路は推定していない**．２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
+   フィードフォワード制御を行う．ただし，**２次経路は推定しない**．２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
    
    ## 入力データ
    
@@ -97,3 +97,4 @@
    - 青線：ANC適用前の騒音, 赤線：ANC適用後の騒音
    
    騒音が徐々に小さくなることが確認できる．
+   ２次経路を既知とする場合と比べ，若干であるが収束が遅くなり，収束後の消音性能が劣化する．
