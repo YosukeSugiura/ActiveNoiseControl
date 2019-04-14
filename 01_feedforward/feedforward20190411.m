@@ -120,4 +120,3 @@ legend('Output (without ANC)','Output (with ANC)');
 audiowrite('input.wav',in,fs);
 audiowrite('output.wav',out,fs);
 
-
