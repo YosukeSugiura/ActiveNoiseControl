@@ -5,7 +5,7 @@
    Matlab 2016 用ソースコードです．シミュレートした環境は上図（[詳細な説明はこちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)）．
 
 * * * 
-- **feedforward20190411.m**  
+- **feedforward_without_2ndpassEstimation.m**  
 
    フィードフォワード制御を行う．ただし，**２次経路は推定していない**．２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
    
@@ -42,3 +42,10 @@
    <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/01_feedforward/result.png">  
    
    *青線：ANC適用前の騒音, 赤線：ANC適用後の騒音*  
+   
+   
+   
+* * * 
+- **feedforward_with_2ndpassEstimation.m**  
+
+   フィードフォワード制御を行う．はじめにシステム同定法により２次経路を事前に推定する．
