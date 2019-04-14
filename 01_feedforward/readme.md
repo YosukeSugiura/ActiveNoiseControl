@@ -89,7 +89,7 @@
    ２次経路モデルのフィルタ次数は２次経路のインパルス応答長より短く設定している．
    図からある程度正確に２次経路を推定できていることがわかる．
    
-   実行したは以下の図の通り．
+  事前推定後，能動騒音制御を行った結果は下の通り．
    入力騒音は機械動作音である．
    
    <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/01_feedforward/result_ff2.png">  
