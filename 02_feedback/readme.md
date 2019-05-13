@@ -1,6 +1,6 @@
 # フィードバック制御   
    
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedback_system.png" width="420px" />
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedback_system.png" width="480px" />
    
    Matlab 2016 用ソースコードです．シミュレートした環境は上図（[詳細な説明はこちら](https://github.com/YosukeSugiura/ActiveNoiseControl/wiki/フィードフォワード型のシステムモデル)）．
 
@@ -38,11 +38,14 @@
    実行した波形は以下の図の通り．
    入力騒音は狭帯域な騒音 + 広帯域な機械騒音である．
    
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/01_feedforward/result_ff1.png">  
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/result_fb1.png">  
    
    *青線：ANC適用前の騒音, 赤線：ANC適用後の騒音*  
    
-   騒音が徐々に小さくなることが確認できる．
+   上の図から，騒音が抑圧されていることがわかる．
+   さらにスペクトルグラムを見ると，
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_in1.png"> 
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_fb1.png"> 
    
 * * * 
 - **feedforward_with_2ndpassEstimation.m**  
