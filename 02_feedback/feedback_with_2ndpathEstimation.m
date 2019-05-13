@@ -32,18 +32,7 @@ L_preEst	= 10000;			% 事前推定に用いる初期サンプル長
 len			= length(s);
 
 %% インパルス応答の取得 (いじらないで)
-Imp_1st		= csvread('../00_data/impulse1.dat');	% １次経路のインパルス応答
 Imp_2nd		= csvread('../00_data/impulse2.dat');	% ２次経路のインパルス応答
-
-% １次経路のインパルス応答を作成
-smpl		= max( [1, floor(Dist_1st* 0.1/340.29 * fs)] ); % 遅延量
-if smpl <= 200
-	Imp_1st		= Imp_1st(200-smpl:end)';
-else
-	Imp_1st		= [zeros(smpl-200,1);Imp_1st]';
-end
-Imp_1st = Imp_1st./max(abs(Imp_1st));
-L_1st = length(Imp_1st);
 
 % ２次経路(スピーカ１)のインパルス応答を作成
 smpl		= max( [1, floor(Dist_2nd* 0.1/340.29 * fs)] ); % 遅延量
@@ -59,7 +48,6 @@ L_2nd = length(Imp_2nd);
 w			= rand(1,N_1st);							% 騒音制御フィルタの係数
 ch			= zeros(1,N_2nd);							% ２次経路モデルの係数 (未知)
 % -- Buffer --
-x_buf		= zeros(max([L_1st,N_1st, N_2nd]),1);		% 参照信号バッファ
 y_buf		= zeros(max(L_2nd,N_2nd),1);				% ２次経路バッファ
 d_h_buf		= zeros(max(N_1st,N_2nd),1);				% 復元騒音バッファ
 r_buf		= zeros(1, N_1st);							% フィルタード復元騒音バッファ
@@ -98,11 +86,10 @@ for loop=1:len-N_1st
 
 	% -- 参照信号 --
 	x			= s(loop);						% 参照信号
-	x_buf		= [x; x_buf(1:end-1)];			% 参照信号バッファ (FILO)
 	
 	% -- １次経路を通過した騒音 --
 	% #フィードバック型では１次経路の推定を行う必要がない．
-	d			= Imp_1st * x_buf(1:L_1st);
+	d			= x;
 	
 	% -- 制御信号 --
 	y_h			= w * d_h_buf(1:N_1st);
