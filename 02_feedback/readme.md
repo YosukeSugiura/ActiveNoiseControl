@@ -43,9 +43,15 @@
    *青線：ANC適用前の騒音, 赤線：ANC適用後の騒音*  
    
    上の図から，騒音が抑圧されていることがわかる．
-   さらにスペクトルグラムを見ると，
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_in1.png"> 
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_fb1.png"> 
+   さらに下の処理前と処理後における騒音のスペクトルグラムを比較すると，騒音に含まれる強い狭帯域騒音成分のみが抑圧され，広帯域な騒音が残留していることがわかる．
+   
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_in1.png" width="480px" >
+
+   入力騒音のスペクトルグラム（横軸：時間，縦軸：周波数）
+   
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_fb1.png" width="480px" > 
+
+   騒音制御後のスペクトルグラム（横軸：時間，縦軸：周波数）
    
 * * * 
 - **feedforward_with_2ndpassEstimation.m**  
