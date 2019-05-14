@@ -14,11 +14,11 @@ https://github.com/YosukeSugiura/ActiveNoiseControl/wiki
    各ソースコードで使用する音声ファイルやインパルス応答等のデータが入っています．
    
 - [01_feedforward](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/01_feedforward)  
-   フォードフォワード制御を行うサンプルコード群です．  
+   **フィードフォワード制御**を行うサンプルコード群です．  
    "00_data"フォルダも一緒にダウンロードしてください．
    
 - [02_feedback](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/02_feedback)  
-   フォードフォワード制御を行うサンプルコード群です．  
+   **フィードバック制御**を行うサンプルコード群です．  
    "00_data"フォルダも一緒にダウンロードしてください．
    
 ## 実行環境
