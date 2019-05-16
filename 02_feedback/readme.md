@@ -1,4 +1,4 @@
-# フィードバック制御   
+# フィードバック制御シミュレーション
    
    <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedback_system.png" width="480px" />
    
