@@ -1,30 +1,19 @@
-#  能動騒音制御 (Active Noise Control：ANC)
+#  音声・インパルス応答データ
 
-能動騒音制御を勉強するためのサンプルコードをいくつか置いておきます．  
-能動騒音制御の原理はwikiも参考にしてください．
+## 音声データ
 
-能動騒音制御 - Github wiki  
-https://github.com/YosukeSugiura/ActiveNoiseControl/wiki
+- cleaner.wav  
+   掃除機騒音の音声wavデータ．
+   
+- harmonics.wav  
+   機械騒音＋狭帯域騒音の音声wavデータ．
+   
+## インパルス応答データ
 
-## フォルダ一覧
-
-各フォルダの説明です．フォルダごとダウンロードしてください．
-
-- [00_data](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/00_data)  
-   各ソースコードで使用する音声ファイルやインパルス応答等のデータが入っています．
+- impulse1.dat  
+   １次経路のインパルス応答．
    
-- [01_feedforward](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/01_feedforward)  
-   **フィードフォワード制御**を行うサンプルコード群です．  
-   "00_data"フォルダも一緒にダウンロードしてください．
+- impulse2.dat  
+   ２次経路のインパルス応答．
    
-- [02_feedback](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/02_feedback)  
-   **フィードバック制御**を行うサンプルコード群です．  
-   "00_data"フォルダも一緒にダウンロードしてください．
    
-## 実行環境
-   
-動作を保証する実行環境は以下のとおりです．
-   
-   OS : Win 10  
-   言語 : Matlab 2016  
-   Toolbox : なし
