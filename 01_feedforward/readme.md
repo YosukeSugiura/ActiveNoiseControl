@@ -1,4 +1,4 @@
-# フィードフォワード制御   
+# フィードフォワード制御シミュレーション
    
    <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/image/feedforward_system.png" width="420px" />
    
