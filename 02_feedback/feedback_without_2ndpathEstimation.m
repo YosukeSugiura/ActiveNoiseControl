@@ -1,39 +1,39 @@
 %
-%	èƒ½å‹•é¨’éŸ³åˆ¶å¾¡ (ãƒ•ã‚©ãƒ¼ãƒ‰ãƒãƒƒã‚¯åž‹)
-%	* ï¼’æ¬¡çµŒè·¯ã®æŽ¨å®šãªã—(æ—¢çŸ¥ã¨ã™ã‚‹)
+%	”\“®‘›‰¹§Œä (ƒtƒH[ƒhƒoƒbƒNŒ^)
+%	* ‚QŽŸŒo˜H‚Ì„’è‚È‚µ(Šù’m‚Æ‚·‚é)
 % ----------------------------------------
-%	ä½œæˆè€…ï¼š æ‰æµ¦é™½ä»‹
-%	ä½œæˆæ—¥ï¼š 2019.5.13
+%	ì¬ŽÒF ™‰Y—z‰î
+%	ì¬“úF 2019.5.13
 %
 
 clear;
 close all;
 
 
-%% è¨­å®šå¤‰æ•° (ä»»æ„ã«è¨­å®š)
+%% Ý’è•Ï” (”CˆÓ‚ÉÝ’è)
 %-------------------------------------
-% ã‚¹ãƒ”ãƒ¼ã‚«ãƒ»ãƒžã‚¤ã‚¯é–“è·é›¢(cm)
-Dist_1st	= 10;				% 1æ¬¡çµŒè·¯ã®è·é›¢(cm)
-Dist_2nd	= 3;				% 2æ¬¡çµŒè·¯ã®è·é›¢(cm)
+% ƒXƒs[ƒJEƒ}ƒCƒNŠÔ‹——£(cm)
+Dist_1st	= 10;				% 1ŽŸŒo˜H‚Ì‹——£(cm)
+Dist_2nd	= 3;				% 2ŽŸŒo˜H‚Ì‹——£(cm)
 
-% é©å¿œãƒ•ã‚£ãƒ«ã‚¿ã®æ¬¡æ•°
-N_1st		= 200;				% é¨’éŸ³åˆ¶å¾¡ãƒ•ã‚£ãƒ«ã‚¿ W(z) ã®æ¬¡æ•°
-N_2nd		= 150;				% ï¼’æ¬¡çµŒè·¯ãƒ¢ãƒ‡ãƒ« C_h(z) ã®æ¬¡æ•°
+% “K‰žƒtƒBƒ‹ƒ^‚ÌŽŸ”
+N_1st		= 200;				% ‘›‰¹§ŒäƒtƒBƒ‹ƒ^ W(z) ‚ÌŽŸ”
+N_2nd		= 150;				% ‚QŽŸŒo˜Hƒ‚ƒfƒ‹ C_h(z) ‚ÌŽŸ”
 
-% é©å¿œãƒ•ã‚£ãƒ«ã‚¿ã®è¨­å®š
-mu			= 0.1;				% æ›´æ–°ã‚¹ãƒ†ãƒƒãƒ—ã‚µã‚¤ã‚º for é¨’éŸ³åˆ¶å¾¡ãƒ•ã‚£ãƒ«ã‚¿
-g_p			= 0.9;				% NLMSç”¨å¹³å‡ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+% “K‰žƒtƒBƒ‹ƒ^‚ÌÝ’è
+mu			= 0.1;				% XVƒXƒeƒbƒvƒTƒCƒY for ‘›‰¹§ŒäƒtƒBƒ‹ƒ^
+g_p			= 0.9;				% NLMS—p•½‹Ïƒpƒ‰ƒ[ƒ^
 %-------------------------------------
 
-%% é¨’éŸ³ã®å–å¾—
-[s,fs]		= audioread('../00_data/harmonics.wav');	% é¨’éŸ³ä¿¡å·
+%% ‘›‰¹‚ÌŽæ“¾
+[s,fs]		= audioread('../00_data/harmonics.wav');	% ‘›‰¹M†
 len			= length(s);
 
-%% ã‚¤ãƒ³ãƒ‘ãƒ«ã‚¹å¿œç­”ã®å–å¾— (ã„ã˜ã‚‰ãªã„ã§)
-Imp_2nd		= csvread('../00_data/impulse2.dat');	% ï¼’æ¬¡çµŒè·¯ã®ã‚¤ãƒ³ãƒ‘ãƒ«ã‚¹å¿œç­”
+%% ƒCƒ“ƒpƒ‹ƒX‰ž“š‚ÌŽæ“¾ (‚¢‚¶‚ç‚È‚¢‚Å)
+Imp_2nd		= csvread('../00_data/impulse2.dat');	% ‚QŽŸŒo˜H‚ÌƒCƒ“ƒpƒ‹ƒX‰ž“š
 
-% ï¼’æ¬¡çµŒè·¯(ã‚¹ãƒ”ãƒ¼ã‚«ï¼‘)ã®ã‚¤ãƒ³ãƒ‘ãƒ«ã‚¹å¿œç­”ã‚’ä½œæˆ
-smpl		= max( [1, floor(Dist_2nd* 0.1/340.29 * fs)] ); % é…å»¶é‡
+% ‚QŽŸŒo˜H(ƒXƒs[ƒJ‚P)‚ÌƒCƒ“ƒpƒ‹ƒX‰ž“š‚ðì¬
+smpl		= max( [1, floor(Dist_2nd* 0.1/340.29 * fs)] ); % ’x‰„—Ê
 if smpl <= 200
 	Imp_2nd		= Imp_2nd(200-smpl:end)';
 else
@@ -41,69 +41,69 @@ else
 end
 L_2nd = length(Imp_2nd);
 
-%% é…åˆ—åˆæœŸåŒ–
+%% ”z—ñ‰Šú‰»
 % -- Filter --
-w			= rand(1,N_1st);							% é¨’éŸ³åˆ¶å¾¡ãƒ•ã‚£ãƒ«ã‚¿ã®ä¿‚æ•°
-ch			= Imp_2nd(1:N_2nd);							% ï¼’æ¬¡çµŒè·¯ãƒ¢ãƒ‡ãƒ«ã®ä¿‚æ•° (æ—¢çŸ¥)
+w			= rand(1,N_1st);							% ‘›‰¹§ŒäƒtƒBƒ‹ƒ^‚ÌŒW”
+ch			= Imp_2nd(1:N_2nd);							% ‚QŽŸŒo˜Hƒ‚ƒfƒ‹‚ÌŒW” (Šù’m)
 % -- Buffer --
-y_buf		= zeros(max(L_2nd,N_2nd),1);				% ï¼’æ¬¡çµŒè·¯ãƒãƒƒãƒ•ã‚¡
-d_h_buf		= zeros(max(N_1st,N_2nd),1);				% å¾©å…ƒé¨’éŸ³ãƒãƒƒãƒ•ã‚¡
-r_buf		= zeros(1, N_1st);							% ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ãƒ‰å¾©å…ƒé¨’éŸ³ãƒãƒƒãƒ•ã‚¡
-% -- çµæžœ --
-in			= zeros(len,1);								% èª¤å·®ãƒžã‚¤ã‚¯ã§ã® (èª¤å·®ä¿¡å·)
-out			= zeros(len,1);								% çµæžœ (èª¤å·®ä¿¡å·)
-% -- è¨ˆç®—ç”¨ --
+y_buf		= zeros(max(L_2nd,N_2nd),1);				% ‚QŽŸŒo˜Hƒoƒbƒtƒ@
+d_h_buf		= zeros(max(N_1st,N_2nd),1);				% •œŒ³‘›‰¹ƒoƒbƒtƒ@
+r_buf		= zeros(1, N_1st);							% ƒtƒBƒ‹ƒ^[ƒh•œŒ³‘›‰¹ƒoƒbƒtƒ@
+% -- Œ‹‰Ê --
+in			= zeros(len,1);								% Œë·ƒ}ƒCƒN‚Å‚Ì (Œë·M†)
+out			= zeros(len,1);								% Œ‹‰Ê (Œë·M†)
+% -- ŒvŽZ—p --
 out_2nd		= 0;
 
 
-%% é¨’éŸ³åˆ¶å¾¡ã‚·ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
+%% ‘›‰¹§ŒäƒVƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“
 tic;
 
 for loop=1:len-N_1st
 
-	% -- å‚ç…§ä¿¡å· --
-	x			= s(loop);						% å‚ç…§ä¿¡å·
+	% -- ŽQÆM† --
+	x			= s(loop);						% ŽQÆM†
 	
-	% -- ï¼‘æ¬¡çµŒè·¯ã‚’é€šéŽã—ãŸé¨’éŸ³ --
-	% #ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯åž‹ã§ã¯ï¼‘æ¬¡çµŒè·¯ã®æŽ¨å®šã‚’è¡Œã†å¿…è¦ãŒãªã„ï¼Ž
+	% -- ‚PŽŸŒo˜H‚ð’Ê‰ß‚µ‚½‘›‰¹ --
+	% #ƒtƒB[ƒhƒoƒbƒNŒ^‚Å‚Í‚PŽŸŒo˜H‚Ì„’è‚ðs‚¤•K—v‚ª‚È‚¢D
 	d			= x;
 	
-	% -- åˆ¶å¾¡ä¿¡å· --
+	% -- §ŒäM† --
 	y_h			= w * d_h_buf(1:N_1st);
 	
-	% -- ï¼’æ¬¡çµŒè·¯ã‚’é€šéŽã—ãŸåˆ¶å¾¡ä¿¡å· --
-	y_buf		= [y_h; y_buf(1:end-1)];		% åˆ¶å¾¡ä¿¡å·ãƒãƒƒãƒ•ã‚¡
-	out_2nd		= Imp_2nd * y_buf(1:L_2nd);		% ï¼’æ¬¡çµŒè·¯ã‚’é€šéŽã—ãŸåˆ¶å¾¡ä¿¡å·
+	% -- ‚QŽŸŒo˜H‚ð’Ê‰ß‚µ‚½§ŒäM† --
+	y_buf		= [y_h; y_buf(1:end-1)];		% §ŒäM†ƒoƒbƒtƒ@
+	out_2nd		= Imp_2nd * y_buf(1:L_2nd);		% ‚QŽŸŒo˜H‚ð’Ê‰ß‚µ‚½§ŒäM†
 
-	% -- èª¤å·®ä¿¡å· --
+	% -- Œë·M† --
 	e			= d + out_2nd;
 	
-	% -- ï¼’æ¬¡çµŒè·¯ãƒ¢ãƒ‡ãƒ«ã‚’ç•³ã¿è¾¼ã‚“ã åˆ¶å¾¡ä¿¡å·(=ç–‘ä¼¼åˆ¶å¾¡éŸ³) --
+	% -- ‚QŽŸŒo˜Hƒ‚ƒfƒ‹‚ðô‚Ýž‚ñ‚¾§ŒäM†(=‹^Ž—§Œä‰¹) --
 	y_pseudo	= ch * y_buf(1:N_2nd);
 	
-	% -- å¾©å…ƒé¨’éŸ³ --
+	% -- •œŒ³‘›‰¹ --
 	d_h			= e - y_pseudo;
-	d_h_buf		= [d_h; d_h_buf(1:end-1)];		% ãƒãƒƒãƒ•ã‚¡
+	d_h_buf		= [d_h; d_h_buf(1:end-1)];		% ƒoƒbƒtƒ@
 	
-	% -- ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ãƒ‰å¾©å…ƒé¨’éŸ³ --
+	% -- ƒtƒBƒ‹ƒ^[ƒh•œŒ³‘›‰¹ --
 	r			= ch * d_h_buf(1:N_2nd);
-	r_buf		= [r, r_buf(1:end-1)];			% ãƒãƒƒãƒ•ã‚¡
+	r_buf		= [r, r_buf(1:end-1)];			% ƒoƒbƒtƒ@
 	
-	% -- Filtered-X NLMSã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ  --
-	w			= w - mu * e .* r_buf ./(mean(r_buf.^2)+0.1);	% æ›´æ–°
+	% -- Filtered-X NLMSƒAƒ‹ƒSƒŠƒYƒ€ --
+	w			= w - mu * e .* r_buf ./(mean(r_buf.^2)+0.1);	% XV
 
 	in(loop)	= d;
 	out(loop)	= e;
 	
 end
 
-%% æ³¢å½¢ã‚°ãƒ©ãƒ•
+%% ”gŒ`ƒOƒ‰ƒt
 
-% å›³ã®ãƒ—ãƒ­ãƒƒãƒˆ
+% }‚Ìƒvƒƒbƒg
 figure(1);
 plot((1:len)./fs, in); hold on;
 plot((1:len)./fs, out); hold off;
-% å›³ã®è¨­å®š
+% }‚ÌÝ’è
 title('Waveform Obtained from Error Microphone');
 xlim([1, len/fs]);
 xlabel('time [s]');
@@ -111,7 +111,7 @@ ylabel('Amplitude');
 legend('Output (without ANC)','Output (with ANC)');
 
 
-%% wavä¿å­˜
+%% wav•Û‘¶
 audiowrite('input.wav',in,fs);
 audiowrite('output.wav',out,fs);
 
