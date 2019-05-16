@@ -8,7 +8,7 @@ https://github.com/YosukeSugiura/ActiveNoiseControl/wiki
 
 ## フォルダ一覧
 
-各フォルダの説明です．フォルダごとダウンロードしてください．
+各フォルダの説明です．右上の"Clone or Douwnload"と書かれた緑色のボタンからダウンロードしてください．
 
 - [00_data](https://github.com/YosukeSugiura/ActiveNoiseControl/tree/master/00_data)  
    各ソースコードで使用する音声ファイルやインパルス応答等のデータが入っています．
