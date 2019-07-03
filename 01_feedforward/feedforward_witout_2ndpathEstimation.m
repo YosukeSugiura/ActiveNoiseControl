@@ -30,11 +30,12 @@ g_p			= 0.9;				% NLMS用平均パラメータ
 len			= length(s);
 
 %% インパルス応答の取得 (いじらないで)
+% インパルス応答データ <- 200サンプル目にピーク
 Imp_1st		= csvread('../00_data/impulse1.dat');	% １次経路のインパルス応答
 Imp_2nd		= csvread('../00_data/impulse2.dat');	% ２次経路のインパルス応答
 
 % １次経路のインパルス応答を作成
-smpl		= max( [1, floor(Dist_1st* 0.1/340.29 * fs)] ); % 遅延量
+smpl		= max( [1, floor(Dist_1st* 0.01/340.29 * fs)] ); % 遅延量
 if smpl <= 200
 	Imp_1st		= Imp_1st(200-smpl:end)';
 else
@@ -43,7 +44,7 @@ end
 L_1st = length(Imp_1st);
 
 % ２次経路(スピーカ１)のインパルス応答を作成
-smpl		= max( [1, floor(Dist_2nd* 0.1/340.29 * fs)] ); % 遅延量
+smpl		= max( [1, floor(Dist_2nd* 0.01/340.29 * fs)] ); % 遅延量
 if smpl <= 200
 	Imp_2nd		= Imp_2nd(200-smpl:end)';
 else
