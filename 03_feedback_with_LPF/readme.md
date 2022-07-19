@@ -1,6 +1,6 @@
 # 線形予測器を用いたフィードバック制御シミュレーション
    
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/03_feedback_with_LPF/feedback_LPF_system.png" width="480px" />
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/03_feedback_with_LPF/feedback_LPF_system.png" width="480px" />
    
    Matlab 2016 用ソースコード．シミュレートした環境は上図． 
    
