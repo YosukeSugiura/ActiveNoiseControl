@@ -16,13 +16,16 @@ close all;
 [in, ~]			= audioread('input.wav');
 [out, ~]		= audioread('output_FB.wav');
 [out_LPF, fs]	= audioread('output_FB_LPF.wav');
+len				= length(in);
 
 %% ƒXƒyƒNƒgƒ‹
 
 % ‰¹º‚ÌƒXƒyƒNƒgƒƒOƒ‰ƒ€æ“¾
-[X_in, f, t]	= stft_(in, 256, 1024, 36, fs);
-[X_out, f, t]	= stft_(out, 256, 1024, 36, fs);
-[X_lpf, f, t]	= stft_(out_LPF, 256, 1024, 36, fs);
+S = 2048;
+N = 8192;
+[X_in, f, t]	= stft_(in, S, N, S/16, fs);
+[X_out, f, t]	= stft_(out, S, N, S/16, fs);
+[X_lpf, f, t]	= stft_(out_LPF, S, N, S/16, fs);
 
 % û‘©Œã(§ŒäŒã)‚Ì•½‹ÏƒXƒyƒNƒgƒ‹‚ğŒvZ
 L = 500;
@@ -31,17 +34,36 @@ X_out_ave		= mean(abs(X_out(end-L:end,:)),1);	% ÅŒã‚ÌLƒtƒŒ[ƒ€•ª‚ÌƒXƒyƒNƒgƒ‹‚ğ•
 X_lpf_ave		= mean(abs(X_lpf(end-L:end,:)),1);	% ÅŒã‚ÌLƒtƒŒ[ƒ€•ª‚ÌƒXƒyƒNƒgƒ‹‚ğ•½‹Ï
 
 % ‘Î”ƒXƒP[ƒ‹‚Ìƒpƒ[ƒXƒyƒNƒgƒ‹
-P_in_ave = 20*log10(X_in_ave(1:512)+10^(-8));
-P_out_ave = 20*log10(X_out_ave(1:512)+10^(-8));
-P_lpf_ave = 20*log10(X_lpf_ave(1:512)+10^(-8));
+P_in_ave = 20*log10(X_in_ave(1:N/2)+10^(-8));
+P_out_ave = 20*log10(X_out_ave(1:N/2)+10^(-8));
+P_lpf_ave = 20*log10(X_lpf_ave(1:N/2)+10^(-8));
 
+
+%% }¦
+% ”gŒ`
 figure(1);
-plot(f, P_in_ave(1:512), 'LineWidth', 1); hold on;
-plot(f, P_out_ave(1:512), 'LineWidth', 1);
-plot(f, P_lpf_ave(1:512), 'LineWidth', 1); hold off;
+plot((1:len)./fs, in, 'Color','r'); hold on;
+plot((1:len)./fs, out, 'Color',[0 0.4470 0.7410]);
+plot((1:len)./fs, out_LPF, 'Color',[0.4660 0.6740 0.1880]); hold off;
+xlabel('Time [s]');
+ylabel('Value');
+title('Waveform');
+legend('Input','FB-ANC','FB-ANC with LPF');
+
+% ƒXƒyƒNƒgƒƒOƒ‰ƒ€
+figure(2);
+plot(f, P_in_ave, 'LineWidth', 1, 'Color','r'); hold on;
+plot(f, P_out_ave, 'LineWidth', 2, 'Color',[0 0.4470 0.7410]);
+plot(f, P_lpf_ave, 'LineWidth', 2, 'Color',[0.4660 0.6740 0.1880]); hold off;
 xlabel('Frequency [Hz]');
 ylabel('Power [dB]');
 title('Spectra');
 legend('Input','FB-ANC','FB-ANC with LPF');
-ylim([-35, 15])
+ylim([-35, 40])
 
+% ƒXƒyƒNƒgƒƒOƒ‰ƒ€‚Ì·
+figure(3);
+plot(f, P_out_ave-P_lpf_ave, 'LineWidth', 2);
+xlabel('Frequency [Hz]');
+ylabel('Improvement [dB]');
+title('Improvement from FB-ANC');
