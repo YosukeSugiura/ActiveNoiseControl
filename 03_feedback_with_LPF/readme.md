@@ -9,7 +9,7 @@
 
    R. Takasugi, Y. Sugiura and T. Shimamura, "Feedback Active Noise Control using Linear Prediction Filter for Colored Wide-band Background Noise Environment," 2019 International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS), 2019, pp. 1-2, doi: 10.1109/ISPACS48206.2019.8986340.
    
-   Link : https://ieeexplore.ieee.org/document/8986340, Paper Link : [Accepted Version]()
+   Link : https://ieeexplore.ieee.org/document/8986340, Paper Link : [Accepted Version](http://133.38.201.199:50505/portal/apis/fileExplorer/download.cgi?act=download&link=JZUWlHty4JHu0IOzKNNbJQ&link_session_id=sjdfO7efBP-6YsQDTAjfgg00&total=1&browser=chrome&mod_cntype=1&path=%2FOpen&file=Feedback_Active_Noise_Control_using_Linear_Prediction_Filter_for_Colored_Wide-band_Background_Noise_Environment.pdf)
    
    
    > © 20XX IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
@@ -34,20 +34,24 @@
 * * * 
 # 1. 線形予測器を用いたフィードバック制御 (2次経路は既知)
 
-- 使用コード：**feedback_LPF_without_2ndpathEstimation.m**  
+線形予測器を用いたフィードバック制御(FB-LPF-ANC)を行う．ただし，**２次経路は推定していない**．
 
-   線形予測器を用いたフィードバック制御を行う．ただし，**２次経路は推定していない**．２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
+### 使用コード
+
+- **feedback_LPF_without_2ndpathEstimation.m**  
+
+   ２次経路は既知として，２次経路モデルを<img src="https://latex.codecogs.com/png.latex?\dpi{120}&space;\hat{C}(z)=C(z)">と設定している． 
    
-   ### 入力データ
+### 入力データ
    
    - **騒音データ**  
-      00_data -> cleaner.wav  ： 狭帯域な騒音 + 広帯域な機械騒音
+      00_data -> cleaner.wav  ： 掃除機騒音(狭帯域な騒音 + 広帯域な機械騒音)
       
    - **２次経路のインパルス応答データ**  
       00_data -> impulse2.dat
     
    
-   ### 設定パラメータ
+### 設定パラメータ
    
    - **スピーカ・マイク間距離(cm)**  
       ２次経路の経路長(距離)を変更できる．  **１次経路は使用しない**．
@@ -70,28 +74,31 @@
    実行した波形は以下の図の通り．
    入力騒音は狭帯域な騒音 + 広帯域な機械騒音である．
    
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/result_fb1.png">  
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/03_feedback_with_LPF/result_fb.png">  
    
    *青線：ANC適用前の騒音, 赤線：ANC適用後の騒音*  
    
-   上の図から，騒音が抑圧されていることがわかる．
+   波形からは騒音低減効果がわかりにくい．
    
-   処理前と処理後における騒音のスペクトルグラムを下の図に示す．これらを比較すると，騒音に含まれる強い狭帯域騒音成分のみが抑圧され，広帯域な騒音が残留していることがわかる．
+   処理前と処理後における騒音のスペクトルグラムを下の図に示す．これらを比較すると，騒音に含まれる強い狭帯域騒音成分(約400Hz)が抑圧されていることがわかる．一方で，広帯域な騒音が残留していることがわかる．
    
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_in1.png" width="520px" >
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/03_feedback_with_LPF/freq_in.png" width="520px" >
 
-   入力騒音のスペクトルグラム（横軸：時間，縦軸：周波数）
+   入力騒音のスペクトログラム（横軸：時間，縦軸：周波数）
    
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_fb1.png" width="520px" > 
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/03_feedback_with_LPF/freq_fb.png" width="520px" > 
 
-   騒音制御後のスペクトルグラム（横軸：時間，縦軸：周波数）
+   騒音制御後のスペクトログラム（横軸：時間，縦軸：周波数）
    
 * * * 
-- **feedback_LPF_with_2ndpathEstimation.m**  
+# 2. 線形予測器を用いたフィードバック制御 (2次経路は未知)
 
-   フィードバック制御を行う．はじめにシステム同定法により２次経路を事前に推定する．
+線形予測器を用いたフィードバック制御(FB-LPF-ANC)を行う．はじめにシステム同定法により２次経路を事前に推定する．
+
+### 使用コード
+- **feedback_LPF_with_2ndpathEstimation.m**  
    
-   ## 入力データ
+### 入力データ
    
    - **騒音データ**  
       00_data -> harmonics.wav ： 狭帯域な騒音 + 広帯域な機械騒音
@@ -100,7 +107,7 @@
       00_data -> impulse2.dat
     
    
-   ## 設定パラメータ
+### 設定パラメータ
    
    - **スピーカ・マイク間距離(cm)**  
       ２次経路の経路長(距離)を変更できる． **１次経路は使用しない**．
@@ -123,33 +130,21 @@
    - **事前学習の時間**   
       事前学習（システム同定法）に費やす時間（サンプル長）を変更できる．
    
-   ## 実行結果
+### 実行結果
    
-   まずは事前推定した２次経路モデルのインパルス応答を下に示す．
+   実行結果は上記の２次経路を推定しないシステムとほぼ同一になるため省略する．
    
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/01_feedforward/result_2ndpath.png">  
-   
-   - 青線：２次経路のインパルス応答(真値), 赤線：２次経路モデル(推定値)
-   
-   ２次経路モデルのフィルタ次数は２次経路のインパルス応答長より短く設定している．
-   図から２次経路モデルは２次経路をよく近似していることがわかる．
-   
-   実行したは以下の図の通り．
-   入力騒音は狭帯域な騒音 + 広帯域な機械騒音である．
-   
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/result_fb2.png">  
-   
-   - 青線：ANC適用前の騒音, 赤線：ANC適用後の騒音
-   
-   ２次経路を既知とした場合と同様，騒音が徐々に小さくなることが確認できる．
-   
-     さらに処理前と処理後における騒音のスペクトルグラムを下の図に示す．これらを比較すると，騒音に含まれる強い狭帯域騒音成分のみが抑圧され，広帯域な騒音が残留していることがわかる．２次経路を既知とした場合との差は僅かだが，２次経路の推定誤差による若干の騒音抑圧性能の劣化がある．
-   
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_in1.png" width="520px" >
+# 3. スペクトルの表示
 
-   入力騒音のスペクトルグラム（横軸：時間，縦軸：周波数）
+### 使用コード
+- **figure_plot.m**  
+
+### 実行結果
    
-   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/02_feedback/freq_fb2.png" width="520px" > 
+   スペクトルを表示する(青色：制御前の騒音，赤色：FB-ANV，緑色：FB-LPF-ANC)．実行結果は以下の図の通り．
+   
+   <img src="https://github.com/YosukeSugiura/ActiveNoiseControl/blob/master/03_feedback_with_LPF/spec.png">  
 
-   騒音制御後のスペクトルグラム（横軸：時間，縦軸：周波数）
+   騒音のスペクトル（横軸：周波数[Hz]，縦軸：パワー[dB]）
 
+   この図からわかるように，
