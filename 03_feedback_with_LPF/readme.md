@@ -9,7 +9,7 @@
 
    R. Takasugi, Y. Sugiura and T. Shimamura, "Feedback Active Noise Control using Linear Prediction Filter for Colored Wide-band Background Noise Environment," 2019 International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS), 2019, pp. 1-2, doi: 10.1109/ISPACS48206.2019.8986340.
    
-   Link : https://ieeexplore.ieee.org/document/8986340, Paper Link : [Accepted Version](http://133.38.201.199:50505/portal/apis/fileExplorer/download.cgi?act=download&link=JZUWlHty4JHu0IOzKNNbJQ&link_session_id=sjdfO7efBP-6YsQDTAjfgg00&total=1&browser=chrome&mod_cntype=1&path=%2FOpen&file=Feedback_Active_Noise_Control_using_Linear_Prediction_Filter_for_Colored_Wide-band_Background_Noise_Environment.pdf)
+   Link : https://ieeexplore.ieee.org/document/8986340, Paper Link : [Accepted Version](http://133.38.201.199:50505/portal/apis/fileExplorer/share_link.cgi?link=61-ERrEx3SNb6fkOjGFM1w)
    
    
    > © 20XX IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
